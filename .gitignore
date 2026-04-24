@@ -1,0 +1,53 @@
+# Backend (Maven/Java)
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/*.class
+backend/*.jar
+backend/*.war
+backend/*.ear
+backend/.settings/
+backend/.project
+backend/.classpath
+backend/.factorypath
+backend/.apt_generated/
+backend/.springBeans
+backend/hs_err_pid*
+backend/replay_pid*
+
+# Frontend (Node/React)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+frontend/.cache/
+frontend/coverage/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/package-lock.json
+frontend/yarn.lock
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
