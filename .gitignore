@@ -7,9 +7,6 @@ backend/*.class
 backend/*.jar
 backend/*.war
 backend/*.ear
-backend/.settings/
-backend/.project
-backend/.classpath
 backend/.factorypath
 backend/.apt_generated/
 backend/.springBeans
