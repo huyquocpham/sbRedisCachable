@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # Spring Boot Backend Application
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: product-service-backend
+    ports:
+      - "8080:8080"
+    environment:
+      # MySQL Configuration
+      - SPRING_DATASOURCE_URL=jdbc:mysql://192.168.1.88:3306/testdb2?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=All4one%8
+      # Redis Configuration
+      - SPRING_DATA_REDIS_HOST=192.168.1.88
+      - SPRING_DATA_REDIS_PORT=30037
+      - SPRING_DATA_REDIS_PASSWORD=password
+      # JVM Options
+      - JAVA_OPTS=-Xmx512m -Xms256m
+    networks:
+      - product-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Optional: Local MySQL Service (uncomment to use instead of external)
+  # mysql:
+  #   image: mysql:8.0.33
+  #   container_name: product-service-mysql
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=rootpassword
+  #     - MYSQL_DATABASE=testdb2
+  #     - MYSQL_USER=admin
+  #     - MYSQL_PASSWORD=All4one%8
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   networks:
+  #     - product-network
+  #   restart: unless-stopped
+
+  # Optional: Local Redis Service (uncomment to use instead of external)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: product-service-redis
+  #   ports:
+  #     - "6379:6379"
+  #   command: redis-server --requirepass password
+  #   volumes:
+  #     - redis-data:/data
+  #   networks:
+  #     - product-network
+  #   restart: unless-stopped
+
+networks:
+  product-network:
+    driver: bridge
+
+# volumes:
+#   mysql-data:
+#   redis-data:
+
