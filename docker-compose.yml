@@ -38,7 +38,7 @@ services:
   #     - "3306:3306"
   #   environment:
   #     - MYSQL_ROOT_PASSWORD=rootpassword
-  #     - MYSQL_DATABASE=testdb2
+  #     - MYSQL_DATABASE=testdb1
   #     - MYSQL_USER=admin
   #     - MYSQL_PASSWORD=All4one%8
   #   volumes:
